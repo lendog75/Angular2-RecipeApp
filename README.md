@@ -14,6 +14,7 @@ I made it to serve as code samples, and to provide myself a way to easily access
 * Bootstrap 4
 * Font Awesome
 
+###Don't forget to do a npm install
 
 Enjoy!
 
