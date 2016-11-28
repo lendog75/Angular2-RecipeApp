@@ -1,0 +1,21 @@
+<div class="card">
+    <a [routerLink]="['/recipe', recipe._id]">
+        <div class="card-block">
+
+
+            <h4 class="card-title text-xs-center">{{ recipe.title }} <small>{{ recipe.subTitle }}</small></h4>
+            <p class="card-text text-xs-center">
+                <small class="text-muted">by: Lenny Reed</small>
+            </p>
+            <div class="text-xs-center" style="height:0">
+                <img src="/assets/img/lenny-reed.jpg" alt="..." class="img-circle img-rounded center-block"
+                     style="height:75px; position: relative;bottom:15px; border:white solid 3px">
+            </div>
+        </div>
+        <div>
+            <img *ngIf="recipe" class="card-img-bottom"  alt="{{ recipe.title }}"
+                 src="{{ getImage(recipe) }}" data-holder-rendered="true"
+                 style="width: 100%; display: block;">
+        </div>
+    </a>
+</div>

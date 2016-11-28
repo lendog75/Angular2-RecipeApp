@@ -1,0 +1,14 @@
+<div class="container">
+    <div>
+        <input type="text" [(ngModel)]="listFilter" placeholder="filterBy" ><br><br>
+    </div>
+
+    <div class="card-columns">
+        <div *ngFor="let recipe of recipes | recipeFilter: listFilter">
+            <recipe-card [recipe]="recipe" (click)="onSelect(recipe)"></recipe-card>
+            <!--<recipe-author-card  *ngIf="recipe.type == 'recipe'" [model]="recipe">{{recipe}}></recipe-author-card>-->
+            <!--<group-card  *ngIf="recipe.type == 'group'" [model]="recipe">{{recipe}}></group-card>-->
+        </div>
+    </div>
+</div>
+

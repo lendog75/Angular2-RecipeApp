@@ -1,0 +1,102 @@
+<!--<div *ngIf="recipe">-->
+    <!--<h1> {{recipe.title }}</h1>-->
+<!--</div>-->
+
+
+<div class="row" *ngIf="recipe">
+    <div class="col-md-9">
+        <article class="" style="background-color: white;padding: 15px;">
+
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Dinners</a></li>
+                <li class="breadcrumb-item active">{{ recipe.title }}</li>
+            </ol>
+
+
+            <div class="page-header">
+                <h1>{{ recipe.title }}
+                    <small> {{recipe.subTitle}}</small>
+                </h1>
+            </div>
+
+            RECIPE BY: Lenny Reed
+            <br><br>
+            <div class="row">
+                <div class="col-sm-8">
+                    <img src="{{ getImage(recipe) }}" alt="{{ recipe.name }}"
+                         class="img-fluid">
+                    <div style="top: -19px; position: relative;background: black; opacity: 0.75; color: white; padding: 0; margin: 0"
+                         class="row">
+                        <div class="col-md-4">
+                            <small>Cook Time {{ recipe.cookTime }}</small>
+                        </div>
+                        <div class="col-md-2">
+                            <small>Serves {{ recipe.serves }}</small>
+                        </div>
+                        <div class="col-md-2">
+                            <small>Calories {{ recipe.calories }}</small>
+                        </div>
+                        <div class="col-md-4">
+                            <!--<small>Rating</small>-->
+
+                            <ai-star [rating]='recipe.rating'
+                                     (ratingClicked)='onRatingClicked($event)'>
+                            </ai-star>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <p style="font-size: 20px">{{ recipe.description }}</p>
+                    {{recipe.rating}}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+
+                    <ul class="list-group" *ngIf="recipe.ingredients">
+                        <li class="list-group-item list-group-item-success">
+                            <h4 class="text-uppercase">Ingredients</h4>
+                        </li>
+                        <li class="list-group-item" *ngFor="let ingredient of recipe.ingredients">
+                            <p>{{ingredient.amount}} {{ingredient.unit}} {{ingredient.name}}</p>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group" *ngIf="recipe.otherStuff">
+                        <li class="list-group-item list-group-item-success">
+                            <h4 class="text-uppercase">Other Supplies</h4>
+                        </li>
+                        <li class="list-group-item" *ngFor="let stuff of recipe.otherStuff">
+                            {{stuff.amount}} {{stuff.unit}} {{stuff.name}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-8">
+                    <h4 class="text-uppercase" *ngIf="recipe.directions">Directions</h4>
+                    <div *ngFor="let direction of recipe.directions">
+                        <h5>Step {{ direction.order}}: {{direction.title}}</h5>
+                        <p>{{direction.value}}</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+    <div class="col-md-3">
+        <button (click)="onBack()">Back</button>
+        <aside class="" style="background: white;padding: 15px;" *ngIf="recipe.tips">
+            <h4 class="text-uppercase">Notes</h4>
+            <div class="bs-callout bs-callout-warning" *ngFor="let tip of recipe.tips">
+                <p>{{ tip.value }}</p>
+            </div>
+        </aside>
+    </div>
+</div>
+
+
+
+
